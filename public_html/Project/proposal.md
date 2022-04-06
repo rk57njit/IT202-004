@@ -1,9 +1,9 @@
 # Project Name: Simple Bank
 ## Project Summary: This project will create a bank simulation for users. They’ll be able to have various accounts, do standard bank functions like deposit, withdraw, internal (user’s accounts)/external(other user’s accounts) transfers, and creating/closing accounts.
 ## Github Link: (Prod Branch of Project Folder) https://github.com/rk57njit/IT202-004/tree/prod/public_html/Project
-## Project Board Link: 
+## Project Board Link: https://github.com/rk57njit/IT202-004/projects/1
 ## Website Link: (Heroku Prod of Project folder) https;//rk57-prod.herokuapp.com/Project
-## Your Name:
+## Your Name: Rajiv Kumar
 
 <!-- Line item / Feature template (use this for each bullet point) -- DO NOT DELETE THIS SECTION
 
@@ -37,7 +37,23 @@
   -  Link to related .md file: [profile.php](https://rk57-prod.herokuapp.com/Project/profile.php)
 
 - Milestone 2
-  - (duplicate template here for Milestone 1 features)
+  - [ ] \(mm/dd/yyyy of completion) Create the Accounts table (id, account_number [unique, always 12 characters], user_id, balance (default 0), account_type, created, modified)
+    -  Link to related .md file: [Link Name](link url)
+  - [ ] \(mm/dd/yyyy of completion) Project setup steps:
+    -  Link to related .md file: [Link Name](link url)
+  - [ ] \(mm/dd/yyyy of completion) Create the Transactions table (see reference at end of document)
+    -  Link to related .md file: [Link Name](link url)
+  - [ ] \(mm/dd/yyyy of completion) Dashboard page
+    -  Link to related .md file: [Link Name](link url)
+  - [ ] \(mm/dd/yyyy of completion) User will be able to create a checking account
+    -  Link to related .md file: [Link Name](link url)
+  - [ ] \(mm/dd/yyyy of completion) User will be able to list their accounts
+    -  Link to related .md file: [Link Name](link url)
+  - [ ] \(mm/dd/yyyy of completion) User will be able to click an account for more information (a.k.a Transaction History page)
+    -  Link to related .md file: [Link Name](link url)
+  - [ ] \(mm/dd/yyyy of completion) User will be able to deposit/withdraw from their account(s)
+    -  Link to related .md file: [Link Name](link url)
+    -
 - Milestone 3
   - (duplicate template here for Milestone 1 features)
 - Milestone 4
