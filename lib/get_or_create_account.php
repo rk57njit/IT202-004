@@ -48,7 +48,7 @@ function get_or_create_account()
             flash("Technical error: " . var_export($e->errorInfo, true), "danger");
         }
         $_SESSION["user"]["account"] = $account; //storing the account info as a key under the user session
-        
+    
         //Note: if there's an error it'll initialize to the "empty" definition around line 42
 
     } else {

@@ -177,5 +177,5 @@ try {
 </div>
 
 <?php
-require(__DIR__ . "/../../partials/footer.php");
+require(__DIR__ . "/../../partials/flash.php");
 ?>
