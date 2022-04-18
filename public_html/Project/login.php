@@ -1,5 +1,6 @@
 <?php
 require_once(__DIR__ . "/../../partials/nav.php");
+require_once(__DIR__ . "/../../lib/functions.php");
 ?>
 <div class="container-fluid">
     <h1>Login</h1>
@@ -104,7 +105,7 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
                             $_SESSION["user"]["roles"] = []; //no roles
                         }
                         flash("Welcome, " . get_username());
-                        get_or_create_account();
+                        
                         die(header("Location: home.php"));
                     } else {
                         flash("Invalid password");
@@ -119,4 +120,4 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
     }
 }
 ?>
-<?php require_once(__DIR__ . "/../../partials/footer.php");
+<?php require_once(__DIR__ . "/../../partials/flash.php");

@@ -1,11 +1,12 @@
-CREATE TABLE IF NOT EXISTS RM_Accounts(
+CREATE TABLE IF NOT EXISTS RM_Cart(
     id int AUTO_INCREMENT PRIMARY KEY,
-    account varchar(12) unique DEFAULT (LPAD(rand_id, 12, "0")),
+    item_id int,
+    quantity int,
     user_id int,
-    rand_id int = (floor(rand()*1000000000),
-    balance int DEFAULT 0,
     created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     modified TIMESTAMP DEFAULT CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES Users(id),
-    check (balance >= 0 AND LENGTH(account) = 12)
+    FOREIGN KEY (item_id) REFERENCES RM_Items(id),
+    UNIQUE KEY (user_id, item_id),
+    check(quantity > 0)
 )
