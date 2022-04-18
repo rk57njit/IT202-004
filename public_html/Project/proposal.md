@@ -1,4 +1,4 @@
-# Project Name: Simple Bank
+# Project Name: Simple Shop
 ## Project Summary: This project will create a bank simulation for users. They’ll be able to have various accounts, do standard bank functions like deposit, withdraw, internal (user’s accounts)/external(other user’s accounts) transfers, and creating/closing accounts.
 ## Github Link: (Prod Branch of Project Folder) https://github.com/rk57njit/IT202-004/tree/prod/public_html/Project
 ## Project Board Link: https://github.com/rk57njit/IT202-004/projects/1
@@ -37,23 +37,28 @@
   -  Link to related .md file: [profile.php](https://rk57-prod.herokuapp.com/Project/profile.php)
 
 - Milestone 2
-  - [ ] \(mm/dd/yyyy of completion) Create the Accounts table (id, account_number [unique, always 12 characters], user_id, balance (default 0), account_type, created, modified)
+  - [ ] \(mm/dd/yyyy of completion) User with an admin role or shop owner role will be able to add products to inventory
     -  Link to related .md file: [Link Name](link url)
-  - [ ] \(mm/dd/yyyy of completion) Project setup steps:
+  - [ ] \(mm/dd/yyyy of completion) Any user will be able to see products with visibility = true on the Shop page
     -  Link to related .md file: [Link Name](link url)
-  - [ ] \(mm/dd/yyyy of completion) Create the Transactions table (see reference at end of document)
+  - [ ] \(mm/dd/yyyy of completion) Admin/Shop owner will be able to see products with any visibility
     -  Link to related .md file: [Link Name](link url)
-  - [ ] \(mm/dd/yyyy of completion) Dashboard page
+  - [ ] \(mm/dd/yyyy of completion) Admin/Shop owner will be able to edit any product
     -  Link to related .md file: [Link Name](link url)
-  - [ ] \(mm/dd/yyyy of completion) User will be able to create a checking account
+  - [ ] \(mm/dd/yyyy of completion) User will be able to click an item from a list and view a full page with more info about the item (Product Details Page)
     -  Link to related .md file: [Link Name](link url)
-  - [ ] \(mm/dd/yyyy of completion) User will be able to list their accounts
+  - [ ] \(mm/dd/yyyy of completion) User must be logged in for any Cart related activity below
     -  Link to related .md file: [Link Name](link url)
-  - [ ] \(mm/dd/yyyy of completion) User will be able to click an account for more information (a.k.a Transaction History page)
+  - [ ] \(mm/dd/yyyy of completion) User will be able to add items to Cart
     -  Link to related .md file: [Link Name](link url)
-  - [ ] \(mm/dd/yyyy of completion) User will be able to deposit/withdraw from their account(s)
+  - [ ] \(mm/dd/yyyy of completion) User will be able to see their cart
     -  Link to related .md file: [Link Name](link url)
-    -
+  - [ ] \(mm/dd/yyyy of completion) User will be able to change quantity of items in their cart
+    -  Link to related .md file: [Link Name](link url)
+  - [ ] \(mm/dd/yyyy of completion) User will be able to remove a single item from their cart via button click
+    -  Link to related .md file: [Link Name](link url)
+  - [ ] \(mm/dd/yyyy of completion) User will be able to clear their entire cart via a button click
+    -  Link to related .md file: [Link Name](link url)
 - Milestone 3
   - (duplicate template here for Milestone 1 features)
 - Milestone 4

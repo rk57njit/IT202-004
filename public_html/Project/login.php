@@ -106,7 +106,7 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
                         }
                         flash("Welcome, " . get_username());
                         
-                        die(header("Location: home.php"));
+                        die(header("Location: shop.php"));
                     } else {
                         flash("Invalid password");
                     }
