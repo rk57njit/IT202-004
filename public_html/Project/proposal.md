@@ -17,50 +17,57 @@
 ### Proposal Checklist and Evidence
 
 - Milestone 1
-  - [ ] \(04/03/2022 of completion) User will be able to register a new account
+  - [X] \(04/03/2022 of completion) User will be able to register a new account
   -  Link to related .md file: [register.php](https://rk57-prod.herokuapp.com/Project/register.php)
-  - [ ] \(04/03/2022 of completion) User will be able to login to their account (given they enter the correct credentials)
+  - [X] \(04/03/2022 of completion) User will be able to login to their account (given they enter the correct credentials)
   -  Link to related .md file: [login.php](https://rk57-prod.herokuapp.com/Project/login.php)
-  - [ ] \(04/03/2022 of completion) User will be able to logout
+  - [X] \(04/03/2022 of completion) User will be able to logout
   -  Link to related .md file: [logout.php](https://rk57-prod.herokuapp.com/Project/logout.php)
-  - [ ] \(04/03/2022 of completion) Basic security rules implemented
+  - [X] \(04/03/2022 of completion) Basic security rules implemented
   -  Link to related .md file: [home.php](https://rk57-prod.herokuapp.com/Project/home.php)
-  - [ ] \(04/03/2022 of completion) Basic Roles implemente
+  - [X] \(04/03/2022 of completion) Basic Roles implemente
   -  Link to related .md file: [home.php](https://rk57-prod.herokuapp.com/Project/home.php)
-  - [ ] \(04/03/2022 of completion) Site should have basic styles/theme applied; everything should be styled
+  - [X] \(04/03/2022 of completion) Site should have basic styles/theme applied; everything should be styled
   -  Link to related .md file: [styles.css](https://rk57-prod.herokuapp.com/Project/home.php)
-  - [ ] \(04/03/2022 of completion) Any output messages/errors should be “user friendly”
+  - [X] \(04/03/2022 of completion) Any output messages/errors should be “user friendly”
   -  Link to related .md file: [home.php](https://rk57-prod.herokuapp.com/Project/home.php)
-  - [ ] \(04/03/2022 of completion) User will be able to see their profile
+  - [X] \(04/03/2022 of completion) User will be able to see their profile
   -  Link to related .md file: [profile.php](https://rk57-prod.herokuapp.com/Project/profile.php)
-  - [ ] \(04/03/2022 of completion) User will be able to edit their profile
+  - [X] \(04/03/2022 of completion) User will be able to edit their profile
   -  Link to related .md file: [profile.php](https://rk57-prod.herokuapp.com/Project/profile.php)
 
 - Milestone 2
-  - [ ] \(5/11/2022 of completion) User with an admin role or shop owner role will be able to add products to inventory
+  - [X] \(5/11/2022 of completion) User with an admin role or shop owner role will be able to add products to inventory
     -  Link to related .md file: [add_item.php](https://rk57-prod.herokuapp.com/Project/admin/add_item.php)
-  - [ ] \(5/11/2022 of completion) Any user will be able to see products with visibility = true on the Shop page
+  - [X] \(5/11/2022 of completion) Any user will be able to see products with visibility = true on the Shop page
     -  Link to related .md file: [shop.php](https://rk57-prod.herokuapp.com/Project/shop.php)
-  - [ ] \(5/11/2022 of completion) Admin/Shop owner will be able to see products with any visibility
+  - [X] \(5/11/2022 of completion) Admin/Shop owner will be able to see products with any visibility
     -  Link to related .md file: [item.php](https://rk57-prod.herokuapp.com/Project/admin/items.php)
-  - [ ] \(5/11/2022 of completion) Admin/Shop owner will be able to edit any product
+  - [X] \(5/11/2022 of completion) Admin/Shop owner will be able to edit any product
     -  Link to related .md file: [item.php](https://rk57-prod.herokuapp.com/Project/admin/items.php
-  - [ ] \(5/11/2022 of completion) User will be able to click an item from a list and view a full page with more info about the item (Product Details Page)
+  - [X] \(5/11/2022 of completion) User will be able to click an item from a list and view a full page with more info about the item (Product Details Page)
     -  Link to related .md file: [product_details.php](https://rk57-prod.herokuapp.com/Project/product_details.php)
-  - [ ] \(5/11/2022 of completion) User must be logged in for any Cart related activity below
+  - [X] \(5/11/2022 of completion) User must be logged in for any Cart related activity below
     -  Link to related .md file: [cart.php](https://rk57-prod.herokuapp.com/Project/cart.php)
-  - [ ] \(5/11/2022 of completion) User will be able to add items to Cart
+  - [X] \(5/11/2022 of completion) User will be able to add items to Cart
     -  Link to related .md file: [cart.php](https://rk57-prod.herokuapp.com/Project/cart.php)
-  - [ ] \(5/11/2022 of completion) User will be able to see their cart
+  - [X] \(5/11/2022 of completion) User will be able to see their cart
     -  Link to related .md file: [cart.php](https://rk57-prod.herokuapp.com/Project/cart.php)
-  - [ ] \(5/11/2022 of completion) User will be able to change quantity of items in their cart
+  - [X] \(5/11/2022 of completion) User will be able to change quantity of items in their cart
     -  Link to related .md file: [cart.php](https://rk57-prod.herokuapp.com/Project/cart.php)
-  - [ ] \(5/11/2022 of completion) User will be able to remove a single item from their cart via button click
+  - [X] \(5/11/2022 of completion) User will be able to remove a single item from their cart via button click
     -  Link to related .md file: [cart.php](https://rk57-prod.herokuapp.com/Project/cart.php)
-  - [ ] \(5/11/2022 of completion) User will be able to clear their entire cart via a button click
+  - [X] \(5/11/2022 of completion) User will be able to clear their entire cart via a button click
     -  Link to related .md file: [cart.php](https://rk57-prod.herokuapp.com/Project/cart.php)
 - Milestone 3
-  - (duplicate template here for Milestone 1 features)
+  - [X] \(5/11/2022 of completion) User will be able to purchase items in their Cart
+    -  Link to related .md file: [checkout.php](https://rk57-prod.herokuapp.com/Project/checkout.php)
+  - [X] \(5/11/2022 of completion) Order Confirmation Page
+    -  Link to related .md file: [orderDetails.php](https://rk57-prod.herokuapp.com/Project/orderDetails.php)
+  - [X] \(5/11/2022 of completion) User will be able to see their Purchase History
+    -  Link to related .md file: [userHistory.php](https://rk57-prod.herokuapp.com/Project/userHistory.php)
+  - [X] \(5/11/2022 of completion) Store Owner will be able to see all Purchase History
+    -  Link to related .md file: [all_orders.php](https://rk57-prod.herokuapp.com/Project/all_orders.php)
 - Milestone 4
   - (duplicate template here for Milestone 1 features)
   - 
