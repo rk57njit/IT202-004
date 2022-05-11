@@ -69,8 +69,20 @@
   - [X] \(5/11/2022 of completion) Store Owner will be able to see all Purchase History
     -  Link to related .md file: [all_orders.php](https://rk57-prod.herokuapp.com/Project/all_orders.php)
 - Milestone 4
-  - (duplicate template here for Milestone 1 features)
-  - 
+  - [X] \(5/11/2022 of completion) User can set their profile to be public or private (will need another column in Users table)
+    -  Link to related .md file: [showUsers.php](https://rk57-prod.herokuapp.com/Project/showUsers.php)
+  - [X] \(5/11/2022 of completion) User will be able to rate a product they purchased
+    -  Link to related .md file: [product_details.php](https://rk57-prod.herokuapp.com/Project/product_details.php)
+  - [X] \(5/11/2022 of completion) User’s Purchase History Changes
+    -  Link to related .md file: [userHistory.php](https://rk57-prod.herokuapp.com/Project/userHistory.php)
+  - [X] \(5/11/2022 of completion) Store Owner Purchase History Changes
+    -  Link to related .md file: [all_orders.php](https://rk57-prod.herokuapp.com/Project/admin/all_orders.php)
+  - [X] \(5/11/2022 of completion)Add pagination to Shop Page (and any other product lists not yet mentioned)
+    -  Link to related .md file: [shop.php](https://rk57-prod.herokuapp.com/Project/shop.php)
+  - [X] \(5/11/2022 of completion) Store Owner will be able to see all products out of stock
+    -  Link to related .md file: [items.php](https://rk57-dev.herokuapp.com/Project/admin/items.php)
+  - [X] \(5/11/2022 of completion) Store Owner will be able to see all Purchase History
+    -  Link to related .md file: [shop.php](https://rk57-prod.herokuapp.com/Project/shop.php?name=&col=avg_rating&order=asc)
 ### Intructions
 #### Don't delete this
 1. Pick one project type
