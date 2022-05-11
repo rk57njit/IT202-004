@@ -64,7 +64,7 @@ $orders = filterPurchase2();
                     <th><?php se($item, "created"); ?></th>
                     <th>
                         <a href="<?php
-                                    $url = (string) get_url("orderdetails.php");
+                                    $url = (string) get_url("orderDetails.php");
                                     $ad = "?id=";
                                     $id = (int) se($item, "id", "", false);
                                     $full = $url . $ad . $id;
