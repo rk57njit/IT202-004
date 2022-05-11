@@ -1,16 +1,16 @@
 <?php
 //note we need to go up 1 more directory
 require(__DIR__ . "/../../../partials/nav.php");
-$TABLE_NAME = "RM_Items";
-if (!has_role("Admin")) {
+
+if (!has_role("Admin") && !has_role("Owner")) {
     flash("You don't have permission to view this page", "warning");
-    die(header("Location: $BASE_PATH/home.php"));
+    die(header("Location: $BASE_PATH" . "home.php"));
 }
 
 $results = [];
 if (isset($_POST["itemName"])) {
     $db = getDB();
-    $stmt = $db->prepare("SELECT id, name, description, stock, cost, image from $TABLE_NAME WHERE name like :name LIMIT 50");
+    $stmt = $db->prepare("SELECT id, name, description, category, stock, unit_price from Products WHERE name like :name LIMIT 10");
     try {
         $stmt->execute([":name" => "%" . $_POST["itemName"] . "%"]);
         $r = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -18,8 +18,7 @@ if (isset($_POST["itemName"])) {
             $results = $r;
         }
     } catch (PDOException $e) {
-        error_log(var_export($e, true));
-        flash("Error fetching records", "danger");
+        flash("<pre>" . var_export($e, true) . "</pre>");
     }
 }
 ?>
@@ -31,10 +30,10 @@ if (isset($_POST["itemName"])) {
             <input class="btn btn-primary" type="submit" value="Search" />
         </div>
     </form>
-    <?php if (count($results) == 0) : ?>
+    <?php if ($results && count($results) == 0) : ?>
         <p>No results to show</p>
     <?php else : ?>
-        <table class="table">
+        <table class="table text-dark">
             <?php foreach ($results as $index => $record) : ?>
                 <?php if ($index == 0) : ?>
                     <thead>
@@ -61,3 +60,4 @@ if (isset($_POST["itemName"])) {
 <?php
 //note we need to go up 1 more directory
 require_once(__DIR__ . "/../../../partials/flash.php");
+?>

@@ -1,13 +1,12 @@
-CREATE TABLE Products
-(
-    id          int auto_increment,
-    name        varchar(60) NOT NULL unique,
-    quantity    int            default 0,
-    price       decimal(10, 2) default 0.00,
-    description TEXT,
-    modified    TIMESTAMP       default current_timestamp on update current_timestamp,
-    created     TIMESTAMP       default current_timestamp,
-    user_id     int,
-    primary key (id),
-    foreign key (user_id) references Users (id)
+CREATE TABLE IF NOT EXISTS `Products`(
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `name` VARCHAR(20) NOT NULL UNIQUE,
+    `description` text,
+    `category` VARCHAR(50) default '',
+    `stock` INT DEFAULT 0, 
+    `created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    `modified` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    `unit_price` INT,
+    `visibility` BOOLEAN,
+    CHECK (`stock` >= 0)
 )

@@ -1,126 +1,119 @@
-function flash (message = "", color = "info") {
+function flash(message = "", color = "info") {
     let flash = document.getElementById("flash");
-    //create a div (or whatever wrapper we want)
     let outerDiv = document.createElement("div");
     outerDiv.className = "row justify-content-center";
     let innerDiv = document.createElement("div");
 
-    //apply the CSS (these are bootstrap classes which we'll learn later)
     innerDiv.className = `alert alert-${color}`;
-    //set the content
     innerDiv.innerText = message;
 
     outerDiv.appendChild(innerDiv);
-    //add the element to the DOM (if we don't it merely exists in memory)
     flash.appendChild(outerDiv);
-    clear_flashes();
 }
-let flash_timeout = null;
-function clear_flashes () {
-    let flash = document.getElementById("flash");
-    if (!flash_timeout) {
-        flash_timeout = setTimeout(() => {
-            console.log("removing");
-            if (flash.children.length > 0) {
-                flash.children[0].remove();
-            }
-            flash_timeout = null;
-            if (flash.children.length > 0) {
-                clear_flashes();
-            }
-        }, 3000);
+
+if (document.readyState == 'loading')
+    document.addEventListener('DOMContentLoaded', ready)
+else ready()
+    
+
+function ready(){
+    var remove = document.getElementsByClassName('btn-danger');
+    for (var i = 0; i< remove.length; i++){
+        var button = remove[i];
+        button.addEventListener('click', remove_from_cart)
     }
-}
-window.addEventListener("load", () => setTimeout(clear_flashes, 100));
-function isValidUsername (username) {
-    const pattern = /^[a-z0-9_-]{3,16}$/;
-    return pattern.test(username);
-}
-function isValidEmail (email) {
-    return true;
-}
-function isValidPassword (password) {
-    if (!password) {
-        return false;
+    var quantityInputs = document.getElementsByClassName('cart-quantity-input')
+    for (var i = 0; i< quantityInputs.length; i++){
+        var input = quantityInputs[i]
+        input.addEventListener('change',change_Quantity)
     }
-    return password.length >= 8;
+    var add_to_cart_buttons = document.getElementsByClassName('btn btn-primary')
+    for (var i = 0; i< add_to_cart_buttons.length; i++){
+        var button = add_to_cart_buttons[i]
+        button.addEventListener('click',add_to_cart)
+    }
+
+    var empty_cart = doucument.getElementsByClassName('btn-purchase')[0].addEventListener('click', purchase)
 }
-function isEqual (a, b) {
-    return a === b;
+
+function purchase(){
+    flash("Purchase Successful. Thank You!")
+    var cartItems = document.getElementsByClassName('cart-items')
+    while (cartItems.hasChildNodes()){
+        cartItems.removeChild(cartItems.firstChild())
+    }
+    update_cart_total()
 }
-async function postData (data = {}, url = "/Project/api/game-backend.php") {
 
-    console.log(Object.keys(data).map(function (key) {
-        return "" + key + "=" + data[key]; // line break for wrapping only
-    }).join("&"));
-    let example = 1;
-    if (example === 1) {
-        // Default options are marked with *
-        const response = await fetch(url, {
-            method: 'POST', // *GET, POST, PUT, DELETE, etc.
-            mode: 'cors', // no-cors, *cors, same-origin
-            cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-            credentials: 'same-origin', // include, *same-origin, omit
-            headers: {
-                //'Content-Type': 'application/json'
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            redirect: 'follow', // manual, *follow, error
-            referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-            body: Object.keys(data).map(function (key) {
-                return "" + key + "=" + data[key]; // line break for wrapping only
-            }).join("&") //JSON.stringify(data) // body data type must match "Content-Type" header
-        });
-        return response.json(); // parses JSON response into native JavaScript objects
-    } else if (example === 2) {
-        //making XMLHttpRequest awaitable
-        //https://stackoverflow.com/a/48969580
-        return new Promise(function (resolve, reject) {
-            let xhr = new XMLHttpRequest();
-            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-            xhr.open("POST", url);
-            xhr.onload = function () {
-                if (this.status >= 200 && this.status < 300) {
-                    resolve(xhr.response);
-                } else {
-                    reject({
-                        status: this.status,
-                        statusText: xhr.statusText
-                    });
-                }
-            };
-            xhr.onerror = function () {
-                reject({
-                    status: this.status,
-                    statusText: xhr.statusText
-                });
-            };
-            xhr.send(Object.keys(data).map(function (key) {
-                return "" + key + "=" + data[key]; // line break for wrapping only
-            }).join("&"));
-        });
-    } else if (example === 3) {
-        //make jQuery awaitable
-        //https://petetasker.com/using-async-await-jquerys-ajax
-        //check if jQuery is present
-        // @ts-ignore
-        if (window.$) {
-            let result;
+function add_to_cart(event){
+    var button = event.target
+    var shopItem = button.parentElement.parentElement
+    var title = shopItem.getElementsByClassName('shop-item-title')[0].innerText
+    var price = shopItem.getElementsByClassName('shop-item-price')[0].innerText
+    var image = shopItem.getElementsByClassName('shop-item-image')[0].src
+    addItemToCart(title,price,image)
+    update_cart_total()
+}
 
-            try {
-                // @ts-ignore
-                result = await $.ajax({
-                    url: url,
-                    type: 'POST',
-                    data: Object.keys(data).map(function (key) {
-                        return "" + key + "=" + data[key]; // line break for wrapping only
-                    }).join("&")
-                });
-
-                return result;
-            } catch (error) {
-                console.error(error);
-            }
+function addItemToCart(title,price,image){
+    var cart_row = document.createElement('div')
+    cart_row.classList.add('cart-row')
+    var cartItems = document.getElementsByClassName('cart-items')[0]
+    var cart_item_names = cartItems.getElementsByClassName('cart-item-title')
+    for (var o = 0; o < cart_item_names.length; o++){
+        if (cart_item_names[i].innerText == title){
+            flash("This item is already in the cart")
+            
         }
     }
+    var cart_row_contents = `
+        <div class="cart-item cart-column">
+            <img class="cart-item-image" src=${image} width="100" height="100">
+            <span class="cart-item-title">${title}</span>
+        </div>
+        <span class="cart-price cart-column">${price}</span>
+        <div class="cart-quantity cart-column">
+            <input class="cart-quantity-input" type="number" value="1">
+            <button class="btn btn-danger" type="button">REMOVE</button>
+        </div>
+    `
+    cart_row.innerHTML = cart_row_contents
+    cartItems.append(cart_row)
+    cart_row.getElementsByClassName('btn-danger')[0].addEventListener('click',remove_from_cart)
+    cart_row.getElementsByClassName('cart-quantity-input')[0].addEventListener('change',change_Quantity)
+}
+
+function change_Quantity(event){
+    var input = event.target
+    if (isNaN(input.value) || input.value < 0){
+        input.value = 0
+    }
+    update_cart_total()
+}
+
+function remove_from_cart(event){
+    var button_clicked = event.target
+    button_clicked.parentElement.parentElement.remove()
+    update_cart_total()
+}
+
+function update_cart_total(){
+    var cartItemContainer = document.getElementsByClassName('cart-items')[0]
+    var cartRows = cartItemContainer.getElementsByClassName('cart-row')
+    var total = 0
+    for (var i = 0; i< cartRows.length; i++){
+        var row = cartRows[i]
+        var priceEle = row.getElementsByClassName('cart-price')[0]
+        var quantityEle = row.getElementsByClassName('cart-quantity-input')[0]
+        var price = parseFloat(priceEle.innerText.replace('$',' '))
+        var quantiy = quantityEle.value
+        total = total + (price*quantiy)
+    }
+    total = total / 100
+    document.getElementsByClassName('cart-total-price')[0].innerText = '$' + total
+}
+
+
+function insert_cart_db(){
+
 }

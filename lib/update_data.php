@@ -1,10 +1,7 @@
 <?php
-
 function update_data($table, $id,  $data, $ignore = ["id", "submit"])
 {
     $columns = array_keys($data);
-    //again just another example of removing values from an array
-    //there's no purpose behind my choice between this file and add_data other than demonstration
     foreach ($columns as $index => $value) {
         //Note: normally it's bad practice to remove array elements during iteration
 
@@ -32,8 +29,7 @@ function update_data($table, $id,  $data, $ignore = ["id", "submit"])
         $stmt->execute($params);
         return true;
     } catch (PDOException $e) {
-        error_log(var_export($e->errorInfo, true));
-        flash("Error updating table", "danger");
+        flash("<pre>" . var_export($e->errorInfo, true) . "</pre>");
         return false;
     }
 }

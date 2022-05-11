@@ -10,13 +10,7 @@ if (!isset($per_page)) {
 }
 $total_pages = ceil($total / $per_page);
 //updates or inserts page into query string while persisting anything already present
-function persistQueryString($page)
-{
-    //set the query param for easily building
-    $_GET["page"] = $page;
-    //https://www.php.net/manual/en/function.http-build-query.php
-    return http_build_query($_GET);
-}
+
 function check_apply_disabled_prev($page)
 {
     echo $page < 1 ? "disabled" : "";

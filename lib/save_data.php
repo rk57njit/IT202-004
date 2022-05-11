@@ -6,7 +6,7 @@ function save_data($table, $data, $ignore = ["submit"])
     $query = "INSERT INTO $table "; //be sure you trust $table
     //https://www.php.net/manual/en/functions.anonymous.php Example#3
     $columns = array_filter(array_keys($data), function ($x) use ($ignore) {
-        return !in_array($x, $ignore);
+        return !in_array($x, $ignore); // $x !== "submit";
     });
     //arrow function uses fn and doesn't have return or { }
     //https://www.php.net/manual/en/functions.arrow.php
@@ -24,8 +24,8 @@ function save_data($table, $data, $ignore = ["submit"])
         //echo "Successfully added new record with id " . $db->lastInsertId();
         return $db->lastInsertId();
     } catch (PDOException $e) {
-        error_log(var_export($e->errorInfo, true));
-        flash("An error occurred saving data for table $table", "danger");
+        //echo "<pre>" . var_export($e->errorInfo, true) . "</pre>";
+        flash("<pre>" . var_export($e->errorInfo, true) . "</pre>");
         return -1;
     }
 }

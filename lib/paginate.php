@@ -7,10 +7,6 @@
  */
 function paginate($query, $params = [], $per_page = 10)
 {
-    if (!isset($query) || empty($query)) {
-        flash("Dev note: Query is empty/null", "danger");
-        return;
-    }
     global $page; //will be available after function is called
     try {
         $page = (int)se($_GET, "page", 1, false);
@@ -26,7 +22,6 @@ function paginate($query, $params = [], $per_page = 10)
     } catch (PDOException $e) {
         error_log("paginate error: " . var_export($e, true));
     }
-    global $total;
     $total = 0;
     if (isset($result)) {
         $total = (int)se($result, "total", 0, false);

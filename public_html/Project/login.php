@@ -1,6 +1,5 @@
 <?php
-require_once(__DIR__ . "/../../partials/nav.php");
-require_once(__DIR__ . "/../../lib/functions.php");
+require(__DIR__ . "/../../partials/nav.php");
 ?>
 <div class="container-fluid">
     <h1>Login</h1>
@@ -18,67 +17,43 @@ require_once(__DIR__ . "/../../lib/functions.php");
 </div>
 <script>
     function validate(form) {
-        //TODO 1: implement JavaScript validation
-        //ensure it returns false for an error and true for success
-        let isValid = true;
-        const email = form.email.value;
-        const password = form.password.value;
-        if (email.indexOf("@") > -1) {
-            if (!isValidEmail(email)) {
-                flash("Invalid email", "danger");
-                isValid = false;
-            }
-        } else {
-            if (!isValidUsername(email)) {
-                flash("Username must be lowercase, 3-16 characters, and contain only a-z, 0-9, _ or -", "danger");
-                isValid = false;
-            }
-        }
-        if (!isValidPassword(password)) {
-            flash("Password too short", "danger");
-            isValid = false;
-        }
-        return isValid;
+        return true;
     }
 </script>
 <?php
-//TODO 2: add PHP Code
 if (isset($_POST["email"]) && isset($_POST["password"])) {
-    $email = se($_POST, "email", "", false); //$_POST["email"];
-    $password = se($_POST, "password", "", false); //$_POST["password"];
+    $email = se($_POST, "email", "", false);
+    $password = se($_POST, "password", "", false);
 
-    //TODO 3
     $hasError = false;
     if (empty($email)) {
-        flash("Email must be provided <br>");
+        flash("Email must not be empty", "danger");
         $hasError = true;
     }
     if (str_contains($email, "@")) {
-        //sanitize
         $email = sanitize_email($email);
-        //validate
         if (!is_valid_email($email)) {
-            flash("Invalid email address");
+            flash("Invalid email address", "warning");
             $hasError = true;
         }
     } else {
-        if (!is_valid_username($email)) {
-            flash("Invalid username");
+        if (!preg_match('/^[a-z0-9_-]{3,30}$/i', $email)) {
+            flash("Username must only be alphanumeric and can only contain - or _", "warning");
             $hasError = true;
         }
     }
     if (empty($password)) {
-        flash("Password must be provided <br>");
+        flash("password must not be empty", "danger");
         $hasError = true;
     }
     if (strlen($password) < 8) {
-        flash("Password must be at least 8 characters long <br>");
+        flash("Password too short", "danger");
         $hasError = true;
     }
     if (!$hasError) {
         //TODO 4
         $db = getDB();
-        $stmt = $db->prepare("SELECT id, email, username, password from Users where email = :email or username=:email");
+        $stmt = $db->prepare("SELECT id, email, username, password from Users where email = :email OR username = :email");
         try {
             $r = $stmt->execute([":email" => $email]);
             if ($r) {
@@ -87,31 +62,26 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
                     $hash = $user["password"];
                     unset($user["password"]);
                     if (password_verify($password, $hash)) {
+                        flash("Welcome $email");
                         $_SESSION["user"] = $user;
-                        try {
-                            //lookup potential roles
-                            $stmt = $db->prepare("SELECT Roles.name FROM Roles 
+                    
+                        $stmt = $db->prepare("SELECT Roles.name FROM Roles 
                         JOIN UserRoles on Roles.id = UserRoles.role_id 
                         where UserRoles.user_id = :user_id and Roles.is_active = 1 and UserRoles.is_active = 1");
-                            $stmt->execute([":user_id" => $user["id"]]);
-                            $roles = $stmt->fetchAll(PDO::FETCH_ASSOC); //fetch all since we'll want multiple
-                        } catch (Exception $e) {
-                            error_log(var_export($e, true));
-                        }
-                        //save roles or empty array
-                        if (isset($roles)) {
-                            $_SESSION["user"]["roles"] = $roles; //at least 1 role
-                        } else {
-                            $_SESSION["user"]["roles"] = []; //no roles
-                        }
-                        flash("Welcome, " . get_username());
+                        $stmt->execute([":user_id" => $user["id"]]);
+                        $roles = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         
-                        die(header("Location: shop.php"));
+                        if ($roles) {
+                            $_SESSION["user"]["roles"] = $roles;
+                        } else {
+                            $_SESSION["user"]["roles"] = [];
+                        }
+                        die(header("Location: home.php"));
                     } else {
-                        flash("Invalid password");
+                        flash("Invalid password", "danger");
                     }
                 } else {
-                    flash("Email not found");
+                    flash("Email not found", "danger");
                 }
             }
         } catch (Exception $e) {
@@ -120,4 +90,6 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
     }
 }
 ?>
-<?php require_once(__DIR__ . "/../../partials/flash.php");
+<?php
+require(__DIR__ . "/../../partials/flash.php");
+?>
