@@ -1,8 +1,11 @@
 # Project Name: Simple Shop
-## Project Summary: This project will create a bank simulation for users. They’ll be able to have various accounts, do standard bank functions like deposit, withdraw, internal (user’s accounts)/external(other user’s accounts) transfers, and creating/closing accounts.
+## Project Summary: This project will create a simple e-commerce site for users. Administrators or store owners will be able to manage inventory and users will be able to manage their cart and place orders.
+
 ## Github Link: (Prod Branch of Project Folder) https://github.com/rk57njit/IT202-004/tree/prod/public_html/Project
 ## Project Board Link: https://github.com/rk57njit/IT202-004/projects/1
 ## Website Link: (Heroku Prod of Project folder) https;//rk57-prod.herokuapp.com/Project
+## Youtube Link:  https://youtu.be/Z2iAE77gQUQ
+
 ## Your Name: Rajiv Kumar
 
 <!-- Line item / Feature template (use this for each bullet point) -- DO NOT DELETE THIS SECTION
@@ -13,7 +16,7 @@
 
  End Line item / Feature Template -- DO NOT DELETE THIS SECTION --> 
  
- 
+ https://youtu.be/Z2iAE77gQUQ
 ### Proposal Checklist and Evidence
 
 - Milestone 1
